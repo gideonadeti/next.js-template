@@ -2,12 +2,14 @@
   "name": "next.js-template",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.2.2",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
     "prepare": "node .husky/install.mjs"
   },
   "dependencies": {
