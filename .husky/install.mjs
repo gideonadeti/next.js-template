@@ -1,5 +1,5 @@
 // Skip Husky install in production and CI.
-if (process.env.NODE_ENV === "production" || process.env.CI === "true") {
+if (process.env.NODE_ENV === "production" || process.env.CI != null) {
   process.exit(0);
 }
 
