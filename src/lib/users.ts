@@ -1,4 +1,3 @@
-import axios from "axios";
 import api from "@/lib/api";
 
 export type User = {
@@ -9,25 +8,11 @@ export type User = {
 };
 
 export async function getUsers() {
-  try {
-    const { data } = await api.get<User[]>("/users");
-    return data;
-  } catch (error) {
-    if (error instanceof axios.AxiosError) {
-      throw new Error(error.response?.data?.message || "Failed to fetch users");
-    }
-    throw error;
-  }
+  const { data } = await api.get<User[]>("/users");
+  return data;
 }
 
 export async function getUser(id: string) {
-  try {
-    const { data } = await api.get<User>(`/users/${id}`);
-    return data;
-  } catch (error) {
-    if (error instanceof axios.AxiosError) {
-      throw new Error(error.response?.data?.message || "Failed to fetch user");
-    }
-    throw error;
-  }
+  const { data } = await api.get<User>(`/users/${id}`);
+  return data;
 }

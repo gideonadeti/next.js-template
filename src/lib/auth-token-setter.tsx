@@ -2,13 +2,17 @@
 
 import { useAuth } from "@clerk/nextjs";
 import { useEffect } from "react";
-import { setAuthToken } from "@/lib/api";
+import { setupAuthInterceptor, teardownAuthInterceptor } from "@/lib/api";
 
 export function AuthTokenSetter({ children }: { children: React.ReactNode }) {
   const { getToken } = useAuth();
 
   useEffect(() => {
-    getToken().then((token) => setAuthToken(token ?? null));
+    setupAuthInterceptor(getToken);
+
+    return () => {
+      teardownAuthInterceptor();
+    };
   }, [getToken]);
 
   return <>{children}</>;
