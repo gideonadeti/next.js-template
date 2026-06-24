@@ -37,7 +37,7 @@ Visit `http://localhost:3000`. Sign up via the nav to test authentication.
 
 ## Project structure
 
-```
+```text
 src/
 ├── app/
 │   ├── globals.css          # Tailwind v4 + shadcn theme tokens
@@ -57,21 +57,21 @@ src/
 
 ## Configuration
 
-| Variable | Description |
-|---|---|
+| Variable                            | Description                                       |
+| ----------------------------------- | ------------------------------------------------- |
 | `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk publishable key (public, starts with `pk_`) |
-| `CLERK_SECRET_KEY` | Clerk secret key (private, starts with `sk_`) |
+| `CLERK_SECRET_KEY`                  | Clerk secret key (private, starts with `sk_`)     |
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `pnpm dev` | Start dev server (Next.js) |
-| `pnpm build` | Production build |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Biome check (linter + formatter) |
-| `pnpm format` | Biome format (`--write`) |
-| `pnpm typecheck` | TypeScript check (`--noEmit`) |
+| Command          | Description                      |
+| ---------------- | -------------------------------- |
+| `pnpm dev`       | Start dev server (Next.js)       |
+| `pnpm build`     | Production build                 |
+| `pnpm start`     | Start production server          |
+| `pnpm lint`      | Biome check (linter + formatter) |
+| `pnpm format`    | Biome format (`--write`)         |
+| `pnpm typecheck` | TypeScript check (`--noEmit`)    |
 
 ## Docs
 
