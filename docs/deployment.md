@@ -16,7 +16,7 @@ pnpm start
 
 These must be set in your deployment environment:
 
-```
+```env
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_***
 CLERK_SECRET_KEY=sk_***
 ```

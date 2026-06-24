@@ -30,7 +30,7 @@ export const config = {
 };
 ```
 
-This protects all routes by default.
+`clerkMiddleware()` parses the session on every matched request — it does **not** protect routes by itself. Use `auth().protect()` in server components or `@clerk/nextjs` helpers on the client to enforce authentication (see below).
 
 ### Provider
 
@@ -86,7 +86,18 @@ export default async function Page() {
 
 ## Protecting routes
 
-By default, middleware runs on all routes. To make a route public, add a `publicRoutes` or use `clerkMiddleware` with an allowlist. See [Clerk docs](https://clerk.com/docs/nextjs/getting-started/quickstart).
+Use `auth().protect()` in server components or server actions to require authentication:
+
+```tsx
+import { auth } from "@clerk/nextjs/server";
+
+export default async function ProtectedPage() {
+  const { userId } = await auth.protect();
+  return <p>Hello {userId}</p>;
+}
+```
+
+To make individual routes public without removing the middleware matcher, use `auth()` without `protect()` and handle the unauthenticated case yourself, or rely on client-side helpers like `SignInButton`.
 
 ## Client-side usage
 
