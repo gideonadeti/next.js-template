@@ -65,7 +65,10 @@ export default function RootLayout({
                 <UserButton />
               </Show>
             </header>
-            {children}
+            <main className="flex-1">{children}</main>
+            <footer className="p-4 text-center text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} Next.js Template
+            </footer>
           </ClerkProvider>
         </ThemeProvider>
       </body>
