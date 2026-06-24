@@ -7,8 +7,10 @@ import {
 } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
-import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -35,6 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={cn(
         "h-full",
         "antialiased",
@@ -45,18 +48,26 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <ClerkProvider>
-          <header className="flex items-center justify-end gap-4 p-4">
-            <Show when="signed-out">
-              <SignInButton />
-              <SignUpButton />
-            </Show>
-            <Show when="signed-in">
-              <UserButton />
-            </Show>
-          </header>
-          {children}
-        </ClerkProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ClerkProvider>
+            <header className="flex items-center justify-end gap-4 p-4">
+              <ThemeToggle />
+              <Show when="signed-out">
+                <SignInButton />
+                <SignUpButton />
+              </Show>
+              <Show when="signed-in">
+                <UserButton />
+              </Show>
+            </header>
+            {children}
+          </ClerkProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
