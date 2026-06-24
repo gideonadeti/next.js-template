@@ -112,3 +112,30 @@ export function Profile() {
   return <p>{user?.fullName}</p>;
 }
 ```
+
+## API auth (NestJS backend)
+
+The template includes an Axios client (`src/lib/api.ts`) pre-configured for the NestJS backend.
+An `AuthTokenSetter` component runs inside `<ClerkProvider>` and automatically injects the
+Clerk session JWT as a `Bearer` token on every outgoing request:
+
+```tsx
+// src/lib/auth-token-setter.tsx
+export function AuthTokenSetter({ children }) {
+  const { getToken } = useAuth();
+
+  useEffect(() => {
+    getToken().then((token) => setAuthToken(token ?? null));
+  }, [getToken]);
+
+  return <>{children}</>;
+}
+```
+
+This satisfies the backend's `ClerkAuthGuard` and auto-provisions the user on first request.
+
+### Environment variable
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3000/api/v1
+```
