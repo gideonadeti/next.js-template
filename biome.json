@@ -11,7 +11,8 @@
       "!.next",
       "!dist",
       "!build",
-      "!pnpm-lock.yaml"
+      "!pnpm-lock.yaml",
+      "!src/components/ui"
     ]
   },
   "formatter": {
@@ -25,9 +26,6 @@
       "recommended": true,
       "suspicious": {
         "noUnknownAtRules": "off"
-      },
-      "a11y": {
-        "useSemanticElements": "off"
       }
     },
     "domains": {
